@@ -1,0 +1,138 @@
+﻿<Window x:Class="AlgoTerminal.View.DashboardView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlgoTerminal.View" 
+        xmlns:Vdock="clr-namespace:VishwaDockLibNew;assembly=VishwaDockLibNew"
+        mc:Ignorable="d"
+        Title="DashboardView" Height="450" Width="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="btv" />
+
+        <!-- style a top level menu item -->
+        <ControlTemplate x:Key="VsMenuTop" TargetType="MenuItem">
+            <StackPanel TextBlock.FontSize="15px" Height="40">
+                <!-- label, icons, etc. -->
+                <Label Content="{TemplateBinding Header}" Margin="5" Foreground="White" />
+
+                <!-- sub items -->
+                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False">
+                    <Border BorderThickness="1" Background="White" BorderBrush="#E0E0E0">
+                        <StackPanel IsItemsHost="True" />
+                    </Border>
+                </Popup>
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver"  Value="True">
+                                <Setter Property="Background" Value="#106EBE" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+            </StackPanel>
+        </ControlTemplate>
+
+        <!-- style a non-top level menu item -->
+        <ControlTemplate x:Key="VsMenuSub" TargetType="MenuItem">
+            <DockPanel TextBlock.FontSize="15px" x:Name="panel">
+                <!-- label, icons, etc. -->
+                <Image Source="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}" Width="20" Margin="5,0" />
+                <Label Content="{TemplateBinding Header}" Foreground="Black" Margin="0,5,5,5" />
+                <Image Source="icon_right.png" Visibility="{Binding HasItems, Converter={StaticResource btv}, RelativeSource={RelativeSource TemplatedParent}}" />
+
+                <!-- sub items -->
+                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False" Placement="Right" >
+                    <Border BorderThickness="1" Background="White" BorderBrush="#E0E0E0">
+                        <StackPanel IsItemsHost="True" />
+                    </Border>
+                </Popup>
+            </DockPanel>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" TargetName="panel" Value="#EFF6FC" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <!-- style the separator -->
+        <ControlTemplate x:Key="VsMenuSep" TargetType="Separator">
+            <Border Height="1" Background="#E0E0E0" />
+        </ControlTemplate>
+
+        <!-- style the VSOnline -->
+        <!-- style a top level menu item -->
+        <ControlTemplate x:Key="VsOnline" TargetType="MenuItem">
+            <StackPanel TextBlock.FontSize="15px" Height="40" Orientation="Horizontal" Background="#005A9E">
+                <Label Content="{TemplateBinding Header}" Margin="5" Foreground="White" />
+                <Image Source="icon_down.png" Height="20" Margin="0,0,5,0" />
+
+                <!-- sub items -->
+                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" AllowsTransparency="True" Focusable="False">
+                    <Border BorderThickness="1" Background="White" BorderBrush="#E0E0E0">
+                        <StackPanel IsItemsHost="True" />
+                    </Border>
+                </Popup>
+            </StackPanel>
+        </ControlTemplate>
+
+        <!-- some base stuff -->
+        <Style TargetType="Menu">
+            <Setter Property="Background" Value="Black" />
+            <Setter Property="Height" Value="40px" />
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <StackPanel  Orientation="Horizontal">
+            <StackPanel.RenderTransform>
+                <TranslateTransform x:Name="transferCurreny" X="-40"/>
+            </StackPanel.RenderTransform>
+            <StackPanel.Triggers>
+                <EventTrigger RoutedEvent="StackPanel.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation From="500" To="-1700" Duration="00:00:15"
+                      Storyboard.TargetProperty="X"
+                      Storyboard.TargetName="transferCurreny"
+                      RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </StackPanel.Triggers>
+            <TextBlock FontSize="25" Text="hello" x:Name="txtKron" Margin="10,0,7,0"/>
+            <TextBlock FontSize="25" Text="hello2" x:Name="txtKron1" Margin="10,0,7,0"/>
+            <TextBlock FontSize="25" Text="hello3" x:Name="txtKro1" Margin="10,0,7,0"/>
+            <TextBlock FontSize="25" Text="hello4" x:Name="txtKn1" Margin="10,0,7,0"/>
+            <TextBlock FontSize="25" Text="hello5" x:Name="txron1" Margin="10,0,7,0"/>
+            </StackPanel>
+            <Menu IsMainMenu="True" HorizontalAlignment="Right">
+                <MenuItem Header="AlgoTrading" Template="{StaticResource VsOnline}"/>
+                <MenuItem Header="#920Straddle" Template="{StaticResource VsMenuTop}">
+                    <MenuItem Header="Add new" Template="{StaticResource VsMenuSub}" />
+                </MenuItem>
+                <MenuItem Header="Portfolios" Template="{StaticResource VsMenuTop}">
+                    <MenuItem Header="Create New Portfolio" Template="{StaticResource VsMenuSub}" />
+                    <MenuItem Header="View Portfolio" Template="{StaticResource VsMenuSub}" />
+                </MenuItem>
+                <MenuItem Header="View" Template="{StaticResource VsMenuTop}">
+                    <MenuItem Header="Trade Book" Template="{StaticResource VsMenuSub}" Icon="icon_backlogs.png" />
+                    <MenuItem Header="Net Position" Template="{StaticResource VsMenuSub}" Icon="icon_queries.png" />
+                    <Separator Template="{StaticResource VsMenuSep}" />
+                    <MenuItem Header="Other" Template="{StaticResource VsMenuSub}">
+                        <MenuItem Header="Log Details" Template="{StaticResource VsMenuSub}" Icon="icon_epic.png" />
+                        <MenuItem Header="Order Book" Template="{StaticResource VsMenuSub}" Icon="icon_feature.png" />
+                        <MenuItem Header="Runing Portfolio" Template="{StaticResource VsMenuSub}" Icon="icon_issue.png" />
+                    </MenuItem>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <Vdock:DockManager Grid.Row="1" x:Name="DockManager"/>
+    </Grid>
+</Window>
