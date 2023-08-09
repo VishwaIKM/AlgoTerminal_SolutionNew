@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using AlgoTerminal.NNAPI;
 using System.IO;
-using System.Linq;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using AlgoTerminal.NNAPI;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace AlgoTerminal.FileManager
 {

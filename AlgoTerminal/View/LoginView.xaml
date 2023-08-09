@@ -49,10 +49,10 @@
                 >
                 <WrapPanel>
                     <Image 
-                        Source="/Resource/bela.jpg"
+                        Source="/Resource/IKMlogo.png"
                         HorizontalAlignment="Left"
-                        Height="80"
-                        Width="70"
+                        Height="100"
+                        Width="100"
                         />
                     <TextBlock 
                         Text="ALGO TERMINAL"

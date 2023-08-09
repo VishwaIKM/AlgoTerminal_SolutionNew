@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AlgoTerminal.Model
+﻿namespace AlgoTerminal.Model
 {
     public sealed class NetPosition
     {

@@ -1,17 +1,17 @@
-﻿using Microsoft.Extensions.Hosting;
-using System;
-using System.Windows;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using AlgoTerminal.ViewModel;
-using AlgoTerminal.View;
-using AlgoTerminal.Services;
-using AlgoTerminal.FileManager;
+﻿using AlgoTerminal.FileManager;
 using AlgoTerminal.Manager;
 using AlgoTerminal.Model;
 using AlgoTerminal.Request;
 using AlgoTerminal.Response;
+using AlgoTerminal.Services;
 using AlgoTerminal.UserControls;
+using AlgoTerminal.View;
+using AlgoTerminal.ViewModel;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
+using System.Windows;
 
 namespace AlgoTerminal
 {
@@ -131,22 +131,5 @@ namespace AlgoTerminal
             base.OnExit(e);
             ApplicationManager.ApplicationStopRequirement();
         }
-        //protected override async void OnStartup(StartupEventArgs e)
-        //{
-        //    await AppHost!.StartAsync();
-
-        //    var _runTheWPF = AppHost!.Services.GetRequiredService<DashboardView>();
-        //    this.MainWindow = _runTheWPF;
-        //    _runTheWPF.Show();
-
-
-        //    base.OnStartup(e);
-        //}
-
-        //protected override async void OnExit(ExitEventArgs e)
-        //{
-        //    await AppHost!.StopAsync();
-        //    base.OnExit(e);
-        //}
     }
 }

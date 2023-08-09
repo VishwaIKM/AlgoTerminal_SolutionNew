@@ -5,13 +5,14 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>icons8-application-64.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="appsettings.json" />
-    <None Remove="Resource\bela.jpg" />
     <None Remove="Resource\briefcase.png" />
     <None Remove="Resource\eye.png" />
+    <None Remove="Resource\IKMlogo - Copy.png" />
     <None Remove="Resource\IKMlogo.png" />
     <None Remove="Resource\Log.png" />
     <None Remove="Resource\orderbook.png" />
@@ -19,8 +20,11 @@
     <None Remove="Resource\plus.png" />
     <None Remove="Resource\position.png" />
     <None Remove="Resource\Save.png" />
-    <None Remove="Resource\splash.png" />
     <None Remove="Resource\Trade.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icons8-application-64.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,9 +56,9 @@
     <Resource Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resource\bela.jpg" />
     <Resource Include="Resource\briefcase.png" />
     <Resource Include="Resource\eye.png" />
+    <SplashScreen Include="Resource\IKMlogo - Copy.png" />
     <Resource Include="Resource\IKMlogo.png" />
     <Resource Include="Resource\Log.png" />
     <Resource Include="Resource\orderbook.png" />
@@ -62,7 +66,6 @@
     <Resource Include="Resource\plus.png" />
     <Resource Include="Resource\position.png" />
     <Resource Include="Resource\Save.png" />
-    <Resource Include="Resource\splash.png" />
     <Resource Include="Resource\Trade.png" />
   </ItemGroup>
 

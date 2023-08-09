@@ -18,7 +18,7 @@ namespace AlgoTerminal.View
             var ViewModel = App.AppHost!.Services.GetRequiredService<DashboardViewModel>();
             Loaded += ViewModel.DashboardView_Loaded;
             Closing += ViewModel.DashboardView_Closing;
-           
+
         }
     }
 }

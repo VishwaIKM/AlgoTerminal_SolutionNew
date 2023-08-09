@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Sockets;
-using System.Net;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using AlgoTerminal.Model;
 using AlgoTerminal.NNAPI.Core.Constants;
 using AlgoTerminal.Services;
-using AlgoTerminal.Model;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace AlgoTerminal.NNAPI
 {

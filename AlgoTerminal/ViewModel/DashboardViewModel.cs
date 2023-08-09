@@ -1,13 +1,13 @@
-﻿using System;
-using System.Windows;
-using System.Xml.Linq;
-using System.ComponentModel;
-using AlgoTerminal.View;
-using System.IO;
-using System.Windows.Input;
-using AlgoTerminal.Command;
+﻿using AlgoTerminal.Command;
 using AlgoTerminal.Services;
 using AlgoTerminal.UserControls;
+using AlgoTerminal.View;
+using System;
+using System.ComponentModel;
+using System.IO;
+using System.Windows;
+using System.Windows.Input;
+using System.Xml.Linq;
 
 namespace AlgoTerminal.ViewModel
 {
@@ -92,7 +92,7 @@ namespace AlgoTerminal.ViewModel
 
         private void OnClick_AlgoTradingCommand()
         {
-           // this.sample1.DockControl.Show();
+            // this.sample1.DockControl.Show();
         }
         #endregion
     }
