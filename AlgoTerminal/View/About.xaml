@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AlgoTerminal.View"
         mc:Ignorable="d"
-        Title="About" Height="450" Width="800">
+        Title="About" Height="300" Width="400" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <ScrollViewer>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="New Version: " FontWeight="Bold" />
+                    <Label Content="{Binding NewVersion}" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Current Version: " FontWeight="Bold" />
+                    <Label Content="{Binding CurrentVersion}" />
+                </StackPanel>
+                <Separator />
+                <Label Content="Release Notes: " FontWeight="Bold" />
+                <Label Content="{Binding ReleaseInfo}" />
+                <Separator />
+                <Label>
+                  
+                </Label>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

@@ -89,11 +89,48 @@ namespace AlgoTerminal.ViewModel
 
         #region Command
         public ICommand OnClick_AlgoTrading => new RelayCommand2(OnClick_AlgoTradingCommand, CanThisMethodExecute);
-
         private void OnClick_AlgoTradingCommand()
         {
             // this.sample1.DockControl.Show();
+            About about = new About();
+            about.Show();
         }
+        public ICommand OnClick_RuningPortfolio => new RelayCommand2(OnClick_RuningPortfolioCommand, CanThisMethodExecute);
+
+        private void OnClick_RuningPortfolioCommand()
+        {
+            _portfolioView.DockControl.Show();
+        }
+
+        public ICommand OnClick_TradeBook => new RelayCommand2(OnClick_TradeBookCommand, CanThisMethodExecute);
+
+        private void OnClick_TradeBookCommand()
+        {
+            _tradeBookView.DockControl.Show();
+        }
+
+        public ICommand OnClick_NetPosition => new RelayCommand2(OnClick_NetPositionCommand, CanThisMethodExecute);
+
+        private void OnClick_NetPositionCommand()
+        {
+            _netPositionView.DockControl.Show();
+        }
+
+        public ICommand OnClick_LogDetails => new RelayCommand2(OnClick_LogDetailsCommand, CanThisMethodExecute);
+
+        private void OnClick_LogDetailsCommand()
+        {
+            _loggerView.DockControl.Show();
+        }
+
+        public ICommand OnClick_OrderBook => new RelayCommand2(OnClick_OrderBookCommand, CanThisMethodExecute);
+
+        private void OnClick_OrderBookCommand()
+        {
+            _orderBookView.DockControl.Show();
+        }
+
+       
         #endregion
     }
 }

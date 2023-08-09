@@ -129,16 +129,16 @@
                     <Separator Template="{StaticResource VsMenuSep}" />
                     <MenuItem Header="View Portfolio" Template="{StaticResource VsMenuSub}" Icon="/Resource/eye.png"/>
                     <Separator Template="{StaticResource VsMenuSep}" />
-                    <MenuItem Header="Runing Portfolio" Template="{StaticResource VsMenuSub}" Icon="/Resource/play.png"/>
+                    <MenuItem Header="Runing Portfolio" Template="{StaticResource VsMenuSub}" Icon="/Resource/play.png"  Command="{Binding OnClick_RuningPortfolio}"/>
                 </MenuItem>
                 <MenuItem Header="View" Template="{StaticResource VsMenuTop}">
-                    <MenuItem Header="Trade Book" Template="{StaticResource VsMenuSub}" Icon="/Resource/Trade.png"/>
+                    <MenuItem Header="Trade Book" Template="{StaticResource VsMenuSub}" Icon="/Resource/Trade.png" Command="{Binding OnClick_TradeBook}"/>
                     <Separator Template="{StaticResource VsMenuSep}" />
-                    <MenuItem Header="Net Position" Template="{StaticResource VsMenuSub}" Icon="/Resource/position.png"/>
+                    <MenuItem Header="Net Position" Template="{StaticResource VsMenuSub}" Icon="/Resource/position.png" Command="{Binding OnClick_NetPosition}"/>
                     <Separator Template="{StaticResource VsMenuSep}" />
-                    <MenuItem Header="Log Details" Template="{StaticResource VsMenuSub}" Icon="/Resource/Log.png"/>
+                    <MenuItem Header="Log Details" Template="{StaticResource VsMenuSub}" Icon="/Resource/Log.png" Command="{Binding OnClick_LogDetails}"/>
                     <Separator Template="{StaticResource VsMenuSep}" />
-                    <MenuItem Header="Order Book" Template="{StaticResource VsMenuSub}" Icon="/Resource/orderbook.png"/>
+                    <MenuItem Header="Order Book" Template="{StaticResource VsMenuSub}" Icon="/Resource/orderbook.png" Command="{Binding OnClick_OrderBook}"/>
                 </MenuItem>
             </Menu>
         </StackPanel>
