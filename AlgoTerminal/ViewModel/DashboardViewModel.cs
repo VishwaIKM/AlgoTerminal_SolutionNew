@@ -4,26 +4,47 @@ using System.Xml.Linq;
 using System.ComponentModel;
 using AlgoTerminal.View;
 using System.IO;
+using System.Windows.Input;
+using AlgoTerminal.Command;
+using AlgoTerminal.Services;
+using AlgoTerminal.UserControls;
 
 namespace AlgoTerminal.ViewModel
 {
-    public class DashboardViewModel:BaseViewModel
+    public class DashboardViewModel : BaseViewModel
     {
-        private Sample1 sample1;
-        private Sample2 sample2;
-        static string SettingFileName { get { return string.Format(@"{0}\{1}", Environment.CurrentDirectory, "Layout.xml"); } }
-        public DashboardViewModel(Sample2 sample2, Sample1 sample1)
-        {
-            this.sample2 = sample2;
-            this.sample1 = sample1;
+        #region Var & Fileds
+        public IDashboardModel DashboardModel { get; private set; }
 
+        private readonly PortfolioView _portfolioView;
+        private readonly NetPositionView _netPositionView;
+        private readonly LoggerView _loggerView;
+        private readonly TradeBookView _tradeBookView;
+        private readonly OrderBookView _orderBookView;
+        static string SettingFileName { get { return string.Format(@"{0}\{1}", Environment.CurrentDirectory, "Layout.xml"); } }
+        #endregion
+
+        #region Methods 
+        public DashboardViewModel(OrderBookView orderBookView, PortfolioView portfolioView, NetPositionView netPositionView, LoggerView loggerView, TradeBookView tradeBookView, IDashboardModel dashboardModel)//Sample2 sample2, Sample1 sample1)
+        {
+            //this.sample2 = sample2;
+            //this.sample1 = sample1;
+            _netPositionView = netPositionView;
+            _loggerView = loggerView;
+            _tradeBookView = tradeBookView;
+            _portfolioView = portfolioView;
+            _orderBookView = orderBookView;
+            this.DashboardModel = dashboardModel;
             DockInitialization();
         }
 
         private void DockInitialization()
         {
-            DashboardView.dockManager.RegisterDock(this.sample1);
-            DashboardView.dockManager.RegisterDock(this.sample2);
+            DashboardView.dockManager.RegisterDock(_netPositionView);
+            DashboardView.dockManager.RegisterDock(_loggerView);
+            DashboardView.dockManager.RegisterDock(_tradeBookView);
+            DashboardView.dockManager.RegisterDock(_portfolioView);
+            DashboardView.dockManager.RegisterDock(_orderBookView);
         }
 
         public void DashboardView_Closing(object? sender, CancelEventArgs e)
@@ -56,9 +77,23 @@ namespace AlgoTerminal.ViewModel
             }
             else
             {
-                this.sample1.DockControl.Show();
-                this.sample2.DockControl.Show();
+                _portfolioView.DockControl.Show();
+                _netPositionView.DockControl.Show();
+                _loggerView.DockControl.Show();
+                _tradeBookView.DockControl.Show();
+                _orderBookView.DockControl.Show();
+
             }
         }
+        #endregion
+
+        #region Command
+        public ICommand OnClick_AlgoTrading => new RelayCommand2(OnClick_AlgoTradingCommand, CanThisMethodExecute);
+
+        private void OnClick_AlgoTradingCommand()
+        {
+           // this.sample1.DockControl.Show();
+        }
+        #endregion
     }
 }

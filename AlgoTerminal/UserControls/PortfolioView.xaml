@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="AlgoTerminal.UserControls.PortfolioView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlgoTerminal.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.InputBindings>
+        <KeyBinding Command="{Binding Path=StopCommand}" Key="T" Modifiers="Ctrl"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="DarkGray" />
+        </Grid.Resources>
+        <DataGrid
+            x:Name="objDatagrid"
+            ItemsSource="{Binding StrategyDataCollection}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            CanUserAddRows="False"
+            IsReadOnly="True"
+            GridLinesVisibility="Horizontal"
+            CanUserDeleteRows="False"
+            AutoGenerateColumns="False"
+            BorderBrush="White"
+            FontSize="18"
+            FontStyle="Normal"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto">
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Black" />
+                    <Setter Property="Foreground" Value="White" />
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid
+                         x:Name="objInnerDatagrid"
+                         GridLinesVisibility="Horizontal"
+                         IsReadOnly="True"
+                         AutoGenerateColumns="False"
+                         ItemsSource="{Binding Path=InnerObject}"
+                         Width="1900"
+                         FontSize="14"
+                        BorderThickness="2"
+                         BorderBrush="Gray">
+                        <!--Below is LegDetails binding-->
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Width="70" Binding="{Binding Name}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Trading Symbol" Width="*" Binding="{Binding TradingSymbol}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Status" Width="*" Binding="{Binding Status}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Status}" Value="Error">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Running">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Status}" Value="Waiting">
+                                                <Setter Property="Foreground" Value="Yellow"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="Message" Width="*" Binding="{Binding Message}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Entry Price" Width="*" Binding="{Binding EntryPrice}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Exit Price" Width="*" Binding="{Binding ExitPrice}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Entry Time" Width="*" Binding="{Binding EntryTime}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Exit Time" Width="*" Binding="{Binding ExitTime}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="C P/L" Width="80" Binding="{Binding PNL}" IsReadOnly="True">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsMyValueNegative}" Value="True">
+                                                <Setter Property="Foreground" Value="Red"></Setter>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsMyValueNegative}" Value="False">
+                                                <Setter Property="Foreground" Value="Green"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="B/S" Width="80" Binding="{Binding BuySell}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Qty" Width="80" Binding="{Binding Qty}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="SL" Width="80" Binding="{Binding StopLoss}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="TP" Width="80" Binding="{Binding TargetProfit}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="LTP" Width="66" Binding="{Binding LTP}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Expander Width="50" Expanded="Expander_Expanded" Collapsed="Expander_Collapsed" Background="Transparent"
+                                      BorderThickness="7"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!--Below is StgDetails binding-->
+                <DataGridTextColumn Header="Name" Width="120" Binding="{Binding Name}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Index" Width="120" Binding="{Binding Index}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Entry Time" Width="220" Binding="{Binding EntryTime}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Exit Time" Width="220" Binding="{Binding ExitTime}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="P/L" Width="*" Binding="{Binding PNL}" IsReadOnly="True">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMyValueNegative}" Value="True">
+                                    <Setter Property="Foreground" Value="Red"></Setter>
+                                    <Setter Property="FontSize" Value="15"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsMyValueNegative}" Value="False">
+                                    <Setter Property="Foreground" Value="Green"></Setter>
+                                    <Setter Property="FontSize" Value="15"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="SL" Width="*" Binding="{Binding StopLoss}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="TP" Width="*" Binding="{Binding TargetProfit}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="UID" Width="100" Binding="{Binding UserID}" IsReadOnly="True"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Stop Selected Stg" Command="{Binding StopCommand}" Foreground="White" Background="DarkGray" FontStyle="Italic" FontSize="14" InputGestureText="Ctrl+T" BorderBrush="Black" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</UserControl>

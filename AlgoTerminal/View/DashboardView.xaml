@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AlgoTerminal.View" 
+        xmlns:viewmodel="clr-namespace:AlgoTerminal.ViewModel" 
         xmlns:Vdock="clr-namespace:VishwaDockLibNew;assembly=VishwaDockLibNew"
         mc:Ignorable="d"
         Title="DashboardView" Height="450" Width="800">
@@ -91,44 +92,47 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
             <StackPanel  Orientation="Horizontal">
-            <StackPanel.RenderTransform>
-                <TranslateTransform x:Name="transferCurreny" X="-40"/>
-            </StackPanel.RenderTransform>
-            <StackPanel.Triggers>
-                <EventTrigger RoutedEvent="StackPanel.Loaded">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimation From="500" To="-1700" Duration="00:00:15"
+                <StackPanel.RenderTransform>
+                    <TranslateTransform x:Name="transferCurreny" X="-40"/>
+                </StackPanel.RenderTransform>
+                <StackPanel.Triggers>
+                    <EventTrigger RoutedEvent="StackPanel.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation From="1600" To="-800" Duration="00:00:16"
                       Storyboard.TargetProperty="X"
                       Storyboard.TargetName="transferCurreny"
                       RepeatBehavior="Forever"/>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </StackPanel.Triggers>
-            <TextBlock FontSize="25" Text="hello" x:Name="txtKron" Margin="10,0,7,0"/>
-            <TextBlock FontSize="25" Text="hello2" x:Name="txtKron1" Margin="10,0,7,0"/>
-            <TextBlock FontSize="25" Text="hello3" x:Name="txtKro1" Margin="10,0,7,0"/>
-            <TextBlock FontSize="25" Text="hello4" x:Name="txtKn1" Margin="10,0,7,0"/>
-            <TextBlock FontSize="25" Text="hello5" x:Name="txron1" Margin="10,0,7,0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </StackPanel.Triggers>
+                <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.Connected, Mode=OneWay}" Foreground="{Binding Path=DashboardModel.ConnectedColor}" x:Name="txtKrong" Margin="10,0,7,0"/>
+                <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.Nifty50}" x:Name="txtKron" Margin="10,0,7,0"/>
+                <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.NiftyFut}" x:Name="txtKron1" Margin="10,0,7,0"/>
+                <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.BankNifty}" x:Name="txtKro1" Margin="10,0,7,0"/>
+                <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.BankNiftyFut}" x:Name="txtKn1" Margin="10,0,7,0"/>
+                <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.FinNifty}" x:Name="txron1" Margin="10,0,7,0"/>
+                <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.FinNiftyFut}" x:Name="txron4" Margin="10,0,7,0"/>
             </StackPanel>
             <Menu IsMainMenu="True" HorizontalAlignment="Right">
-                <MenuItem Header="AlgoTrading" Template="{StaticResource VsOnline}"/>
+                <MenuItem Header="AlgoTrading" Template="{StaticResource VsOnline}" Command="{Binding OnClick_AlgoTrading}"/>
                 <MenuItem Header="#920Straddle" Template="{StaticResource VsMenuTop}">
-                    <MenuItem Header="Add new" Template="{StaticResource VsMenuSub}" />
+                    <MenuItem Header="Add new" Template="{StaticResource VsMenuSub}" Icon="/Resource/plus.png"/>
+                    <MenuItem Header="Saved Strategies" Template="{StaticResource VsMenuSub}" Icon="/Resource/Save.png"/>
                 </MenuItem>
-                <MenuItem Header="Portfolios" Template="{StaticResource VsMenuTop}">
-                    <MenuItem Header="Create New Portfolio" Template="{StaticResource VsMenuSub}" />
-                    <MenuItem Header="View Portfolio" Template="{StaticResource VsMenuSub}" />
+                <MenuItem Header="Portfolios" Template="{StaticResource VsMenuTop}" >
+                    <MenuItem Header="Create New Portfolio" Template="{StaticResource VsMenuSub}" Icon="/Resource/briefcase.png" />
+                    <MenuItem Header="View Portfolio" Template="{StaticResource VsMenuSub}" Icon="/Resource/eye.png"/>
+                    <MenuItem Header="Runing Portfolio" Template="{StaticResource VsMenuSub}" Icon="/Resource/play.png"/>
                 </MenuItem>
                 <MenuItem Header="View" Template="{StaticResource VsMenuTop}">
-                    <MenuItem Header="Trade Book" Template="{StaticResource VsMenuSub}" Icon="icon_backlogs.png" />
-                    <MenuItem Header="Net Position" Template="{StaticResource VsMenuSub}" Icon="icon_queries.png" />
+                    <MenuItem Header="Trade Book" Template="{StaticResource VsMenuSub}" Icon="/Resource/Trade.png"/>
+                    <MenuItem Header="Net Position" Template="{StaticResource VsMenuSub}" Icon="/Resource/position.png"/>
                     <Separator Template="{StaticResource VsMenuSep}" />
                     <MenuItem Header="Other" Template="{StaticResource VsMenuSub}">
-                        <MenuItem Header="Log Details" Template="{StaticResource VsMenuSub}" Icon="icon_epic.png" />
-                        <MenuItem Header="Order Book" Template="{StaticResource VsMenuSub}" Icon="icon_feature.png" />
-                        <MenuItem Header="Runing Portfolio" Template="{StaticResource VsMenuSub}" Icon="icon_issue.png" />
+                        <MenuItem Header="Log Details" Template="{StaticResource VsMenuSub}" Icon="/Resource/Log.png"/>
+                        <MenuItem Header="Order Book" Template="{StaticResource VsMenuSub}" Icon="/Resource/orderbook.png"/>
                     </MenuItem>
                 </MenuItem>
             </Menu>

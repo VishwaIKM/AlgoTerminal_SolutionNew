@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,14 +15,14 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VishwaDockLibNew.Interface;
 
-namespace AlgoTerminal.View
+namespace AlgoTerminal.UserControls
 {
     /// <summary>
-    /// Interaction logic for Sample1.xaml
+    /// Interaction logic for TradeBookView.xaml
     /// </summary>
-    public partial class Sample1 : UserControl,IDockSource
+    public partial class TradeBookView : UserControl, IDockSource
     {
-        public Sample1(string header)
+        public TradeBookView(string header)
         {
             InitializeComponent();
             _header = header;

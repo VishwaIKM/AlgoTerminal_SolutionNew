@@ -9,19 +9,40 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
+    <None Remove="Resource\bela.jpg" />
+    <None Remove="Resource\briefcase.png" />
+    <None Remove="Resource\eye.png" />
+    <None Remove="Resource\IKMlogo.png" />
+    <None Remove="Resource\Log.png" />
+    <None Remove="Resource\orderbook.png" />
+    <None Remove="Resource\play.png" />
+    <None Remove="Resource\plus.png" />
+    <None Remove="Resource\position.png" />
+    <None Remove="Resource\Save.png" />
+    <None Remove="Resource\splash.png" />
+    <None Remove="Resource\Trade.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="Resource\" />
+    <Folder Include="DLLFolderForGit\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="FeedC">
+      <HintPath>DLLFolderForGit\FeedC.dll</HintPath>
+    </Reference>
+    <Reference Include="FeedCM">
+      <HintPath>DLLFolderForGit\FeedCM.dll</HintPath>
+    </Reference>
+    <Reference Include="LZONET">
+      <HintPath>DLLFolderForGit\LZONET.dll</HintPath>
+    </Reference>
     <Reference Include="VishwaDockLibNew">
       <HintPath>C:\Users\Vishwa\source\repos\ApplicationSolution\VishwaDockLibNew\bin\Debug\net7.0-windows\VishwaDockLibNew.dll</HintPath>
     </Reference>
@@ -31,6 +52,18 @@
     <Resource Include="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resource\bela.jpg" />
+    <Resource Include="Resource\briefcase.png" />
+    <Resource Include="Resource\eye.png" />
+    <Resource Include="Resource\IKMlogo.png" />
+    <Resource Include="Resource\Log.png" />
+    <Resource Include="Resource\orderbook.png" />
+    <Resource Include="Resource\play.png" />
+    <Resource Include="Resource\plus.png" />
+    <Resource Include="Resource\position.png" />
+    <Resource Include="Resource\Save.png" />
+    <Resource Include="Resource\splash.png" />
+    <Resource Include="Resource\Trade.png" />
   </ItemGroup>
 
 </Project>

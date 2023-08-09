@@ -1,0 +1,140 @@
+﻿<Window x:Class="AlgoTerminal.View.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlgoTerminal.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Algo Terminal" Height="300" Width="750"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        
+        Background="Transparent"
+        Topmost="True">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding Path=LoginCommand}" 
+                    Key="Enter" 
+                    Modifiers=""/>
+        <KeyBinding Command="{Binding Path=ExitAppCommand}"
+                    Key="Esc"
+                    Modifiers=""/>
+    </Window.InputBindings>
+    <materialDesign:Card
+        UniformCornerRadius="15"
+        Background="{DynamicResource MaterialDesignPaper}"
+        Margin="25" >
+        <Grid RenderTransformOrigin="0.497,0.493">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel
+                Grid.Column="0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="30 0 0 0"
+                >
+                <WrapPanel>
+                    <Image 
+                        Source="/Resource/bela.jpg"
+                        HorizontalAlignment="Left"
+                        Height="80"
+                        Width="70"
+                        />
+                    <TextBlock 
+                        Text="ALGO TERMINAL"
+                        FontSize="15"
+                        FontWeight="DemiBold"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10 0 0 0"></TextBlock>
+                </WrapPanel>
+
+
+            </StackPanel>
+
+            <StackPanel
+                     Grid.Column="0"
+                     HorizontalAlignment="Left"
+                     VerticalAlignment="Bottom"
+                     Margin="10 10 10 20">
+                <Label
+                    FontSize="12"
+                    Foreground="Red"
+                    Content="{Binding Path=LoginStatusGUILbl, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <!--Login and Application exit Btn Stack Panel-->
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom"
+                Orientation="Horizontal"
+                Margin="20 10 60 20"
+                >
+
+                <Button
+                    Name="LoginBtn"
+                    BorderBrush="Transparent"
+                    Content="Login"
+                    Foreground="Black"
+                    Margin="10"
+                    Background="LightBlue"
+                    Command="{Binding LoginCommand}"
+                    IsEnabled="{Binding IsLoginButtonEnable}"
+                    
+                    />
+                <Button
+                    x:Name="ExitBtn"
+                     BorderBrush="Transparent"
+                     Background="PaleVioletRed"
+                    Content="Exit"
+                    Command="{Binding ExitAppCommand}"
+                   />
+            </StackPanel>
+
+            <!-- Login and Application Text box-->
+            <StackPanel
+                Grid.Column="1"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="30 30 10 10"
+                Orientation="Vertical"
+                >
+                <TextBox
+                    Margin="10"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    VerticalAlignment="Top"
+                    materialDesign:HintAssist.Hint="User Id"
+                    Width="300" 
+                    >
+                    <TextBox.Text>
+                        <Binding 
+                            Path="UserID"
+                            UpdateSourceTrigger="PropertyChanged"
+                            ValidatesOnExceptions="True">
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <PasswordBox
+                    Margin="10"
+                    Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                    materialDesign:HintAssist.Hint="User Password"
+                    materialDesign:PasswordBoxAssist.Password="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnExceptions=True}" />
+            </StackPanel>
+        </Grid>
+    </materialDesign:Card>
+</Window>

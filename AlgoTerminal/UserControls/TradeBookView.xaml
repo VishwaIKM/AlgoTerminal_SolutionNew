@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="AlgoTerminal.UserControls.TradeBookView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlgoTerminal.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <DataGrid x:Name="TradeBookData" AutoGenerateColumns="False" ItemsSource="{Binding TradeDataCollection}" IsReadOnly="True"   CanUserSortColumns = "True"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Trade Symbol" Width="140" Binding="{Binding TradingSymbol}" SortDirection="Descending"/>
+                <DataGridTextColumn Header="Time" Width="110" Binding="{Binding Time}"/>
+                <DataGridTextColumn Header="Quantity" Width="*" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Price" Width="*" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Buy Sell" Width="*" Binding="{Binding BuySell}"/>
+                <DataGridTextColumn Header="Option Type" Width="*" Binding="{Binding OptionType}"/>
+                <DataGridTextColumn Header="Strike" Width="*" Binding="{Binding Strike}"/>
+                <DataGridTextColumn Header="Symbol" Width="*" Binding="{Binding Symbol}"/>
+                <DataGridTextColumn Header="Expiry" Width="*" Binding="{Binding Expiry}"/>
+                <DataGridTextColumn Header="Client ID" Width="*" Binding="{Binding ClientId}"/>
+                <DataGridTextColumn Header="Trade ID" Width="*" Binding="{Binding TradeID}"/>
+                <DataGridTextColumn Header="ModeratorID" Width="*" Binding="{Binding ModeratorID}"/>
+                <DataGridTextColumn Header="Exch. ID" Width="170" Binding="{Binding ExchnageID}"/>
+            </DataGrid.Columns>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding BUYSELL}" Value="BUY">
+                            <Setter Property="Background" Value="LightGreen"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding BUYSELL}" Value="SELL">
+                            <Setter Property="Background" Value="LightPink"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
+        </DataGrid>
+    </Grid>
+</UserControl>
