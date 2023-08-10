@@ -71,6 +71,7 @@ namespace AlgoTerminal
                    services.AddSingleton<NetPositionViewModel>();
                    services.AddSingleton<LoginViewModel>();
                    services.AddSingleton<OrderBookViewModel>();
+                   services.AddSingleton<StraddleViewModel>();
                    //services.AddSingleton<BuySellViewModel>();
 
                    //View ....
@@ -105,10 +106,10 @@ namespace AlgoTerminal
                    {
                        DataContext = x.GetRequiredService<OrderBookViewModel>()
                    });
-                   //services.AddSingleton<BuySellView>(x => new()
-                   //{
-                   //    DataContext = x.GetRequiredService<BuySellViewModel>()
-                   //});
+                   services.AddSingleton<StraddleView>(x => new("Straddle")
+                   {
+                       DataContext = x.GetRequiredService<StraddleViewModel>()
+                   });
                })
                .Build();
         }

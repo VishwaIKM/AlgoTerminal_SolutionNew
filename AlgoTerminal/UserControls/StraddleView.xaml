@@ -1,0 +1,325 @@
+﻿<UserControl x:Class="AlgoTerminal.UserControls.StraddleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AlgoTerminal.UserControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid>
+            <Label Content="#920Straddle" FontSize="26" HorizontalAlignment="Center"/>
+            <StackPanel>
+                <WrapPanel Orientation="Horizontal" Margin="0 5 0 0">
+                    <GroupBox Header="Instrument settings" Margin="20 35" FontSize="16" materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="Black" materialDesign:ColorZoneAssist.Foreground="White">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" >
+                                <Label Content="Select Index :          " Margin="10"/>
+                                <ComboBox materialDesign:HintAssist.Hint="Select Index" Margin="10" Width="Auto">
+                                    <ComboBoxItem Content="BankNifty" />
+                                    <ComboBoxItem Content="Nifty" />
+                                    <ComboBoxItem Content="FinNifty" />
+                                    <ComboBoxItem Content="MidcpNifty" />
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Underlying Form : " Margin="10"/>
+                                <StackPanel Orientation="Horizontal" Margin="10">
+                                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                 BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                 Margin="4"
+                                 IsChecked="True"
+                                 Content="Cash" />
+                                    <RadioButton
+                                    Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                    BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                    Margin="4"
+                                    IsChecked="False"
+                                    Content="Futures" />
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Entry Settings" Margin="20 35" FontSize="16" materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="Black" materialDesign:ColorZoneAssist.Foreground="White">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Strategy Type :" Margin="10"/>
+                                <StackPanel Orientation="Horizontal" Margin="10">
+                                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                 BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                 Margin="4"
+                                 IsChecked="True"
+                                 Content="Intraday" />
+                                    <RadioButton
+                                    Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                    BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                    Margin="4"
+                                    IsChecked="False"
+                                    IsEnabled="False"
+                                    Content="BTST" />
+                                    <RadioButton
+                                    Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                    BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                    Margin="4"
+                                    IsChecked="False"
+                                    IsEnabled="False"
+                                    Content="Positional" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="10">
+                                <Label Content="Entry Time:              "/>
+                                <materialDesign:TimePicker 
+                                Is24Hours="True"
+                                    Width="140"
+                                    materialDesign:HintAssist.Hint="Pick Time"
+                                    materialDesign:HintAssist.HelperText="Start"
+                                    materialDesign:HintAssist.FloatingOffset="0,-23"
+                                    materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="3"
+                                    materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
+                                    Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
+                                <Label Content="                   Exit Time:                  "/>
+                                <materialDesign:TimePicker 
+                                Is24Hours="True"
+                                    Width="140"
+                                    materialDesign:HintAssist.Hint="Pick Time"
+                                    materialDesign:HintAssist.HelperText="Exit"
+                                    materialDesign:HintAssist.FloatingOffset="0,-23"
+                                    materialDesign:TimePickerAssist.OutlinedBorderInactiveThickness="3"
+                                    materialDesign:TimePickerAssist.OutlinedBorderActiveThickness="3"
+                                    Style="{StaticResource MaterialDesignOutlinedTimePicker}" />
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Legwise settings" Margin="20 35" FontSize="16" materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="Black" materialDesign:ColorZoneAssist.Foreground="White">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" >
+                                <Label Content="Square off:          " />
+                                <StackPanel Orientation="Horizontal" Margin="10">
+                                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                                 BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                                 Margin="4"
+                                                 IsChecked="True"
+                                                 Content="Partial" />
+                                    <RadioButton
+                                                Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                                BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                                Margin="4"
+                                                IsChecked="False"
+                                                Content="Complete" />
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="False" x:Name="TrailSLCheckBox" Content="Trail SL to Break-even price"/>
+                                <StackPanel Orientation="Horizontal" Margin="10">
+                                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                                 BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                                 Margin="4"
+                                                 IsChecked="True"
+                                                 Content="All Legs"
+                                                 IsEnabled="{Binding Path=IsChecked, ElementName=TrailSLCheckBox}"/>
+                                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                                BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                                Margin="4"
+                                                IsChecked="False"
+                                                Content="SL Legs" 
+                                                IsEnabled="{Binding Path=IsChecked, ElementName=TrailSLCheckBox}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Overall strategy settings" Margin="20 35" FontSize="16" materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="Black" materialDesign:ColorZoneAssist.Foreground="White">
+                        <WrapPanel Orientation="Horizontal" Margin="10">
+                            <StackPanel>
+                                <CheckBox Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                                        IsChecked="False"
+                                        x:Name="OverallStopLossCheckBox"
+                                        Content="Overall Stop Loss" />
+                                <StackPanel Orientation="Horizontal">
+
+                                    <ComboBox SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=OverallStopLossCheckBox}" Margin="0 10" Width="Auto">
+                                        <ComboBoxItem Content="MTM" />
+                                        <ComboBoxItem Content="Total Premium %" />
+                                    </ComboBox>
+                                    <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=OverallStopLossCheckBox}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Margin="40 0 0 0">
+                                <CheckBox
+                                        Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                                        IsChecked="False"
+                                         x:Name="OverallREEntryStopLossCheckBox"
+                                        Content="Overall Re-entry on SL" />
+                                <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+
+                                    <ComboBox SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=OverallREEntryStopLossCheckBox}" Margin="0 10" Width="Auto">
+                                        <ComboBoxItem Content="Re ASAP"/>
+                                        <ComboBoxItem Content="Rev Re ASAP" />
+                                        <ComboBoxItem Content="Re MOMENTUM" />
+                                        <ComboBoxItem Content="Rev Re MOMENTUM" />
+                                    </ComboBox>
+                                    <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=OverallREEntryStopLossCheckBox}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Margin="40 0 0 0">
+                                <CheckBox
+                                        Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                                        IsChecked="False"
+                                        x:Name="OverallTragetCheckBox"
+                                        Content="Overall Target"/>
+                                <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+                                    <ComboBox SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=OverallTragetCheckBox}" Margin="0 10" Width="Auto">
+                                        <ComboBoxItem Content="MTM"/>
+                                        <ComboBoxItem Content="Total Premium %" />
+                                    </ComboBox>
+                                    <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=OverallTragetCheckBox}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel  Margin="40 0 0 0">
+                                <CheckBox Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                                        IsChecked="False"
+                                         x:Name="OverallREEntryTargetCheckBox"
+                                        Content="Overall Re-entry on Tgt" />
+                                <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+
+                                    <ComboBox SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=OverallREEntryTargetCheckBox}" Margin="0 10" Width="Auto">
+                                        <ComboBoxItem Content="Re ASAP"/>
+                                        <ComboBoxItem Content="Rev Re ASAP" />
+                                        <ComboBoxItem Content="Re MOMENTUM" />
+                                        <ComboBoxItem Content="Rev Re MOMENTUM" />
+                                    </ComboBox>
+                                    <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=OverallREEntryTargetCheckBox}"/>
+                                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+                                <StackPanel>
+                                    <CheckBox
+                                        Style="{StaticResource MaterialDesignFilterChipCheckBox}"
+                                        IsChecked="False"
+                                         x:Name="TrallingOptionsCheckBox"
+                                        Content="Trailling Options" />
+                              
+                                    <ComboBox x:Name="TrailingOptionCombo" SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}" Margin="10" Width="Auto">
+                                        <ComboBoxItem Content="Lock"/>
+                                        <ComboBoxItem Content="Lock and Trail" />
+                                        <ComboBoxItem Content="Overall Trail SL" />
+                                    </ComboBox>
+
+                                    <WrapPanel Orientation="Horizontal">
+                                        <Label x:Name="porfitreachlbl" IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}" Content="If Profit reaches:   " Margin="0 20" />
+                                        <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}"/>
+                                        <Label x:Name="Lockprofitlbl" IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}" Content="Lock profit:   " Margin="0 20"/>
+                                        <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}"/>
+                                    </WrapPanel>
+                                    <WrapPanel>
+                                        <Label x:Name="Evrylbl" IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}" Content="For every increase in profit by:   " Margin="0 20"/>
+                                        <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}"/>
+                                        <Label x:Name="Everysllbl" IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}" Content="Trail StopLoss by:   " Margin="0 20" />
+                                        <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}"/>
+                                    </WrapPanel>
+                                    <ComboBox x:Name="OTSL" Visibility="Visible" SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}" Margin="10" Width="Auto">
+                                        <ComboBoxItem Content="MTM"/>
+                                        <ComboBoxItem Content="Premium %"/>
+                                    </ComboBox>
+                                    <WrapPanel>
+                                        <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    Visibility="{Binding Path=Visibility,ElementName=OTSL}"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}"/>
+                                        <TextBox
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Top"
+                                    Margin="10 10 5 20"
+                                    AcceptsReturn="True"
+                                    MaxWidth="400"
+                                    Visibility="{Binding Path=Visibility,ElementName=OTSL}"
+                                    materialDesign:HintAssist.Hint="Value in integers"
+                                    IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}"/>
+                                    </WrapPanel>
+                                </StackPanel>
+                                
+                               
+                                <StackPanel Orientation="Horizontal">
+                                    
+                                    
+                                </StackPanel>
+                            </StackPanel>
+
+                        </WrapPanel>
+                    </GroupBox>
+                </WrapPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

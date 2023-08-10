@@ -67,7 +67,7 @@
         <!-- style the VSOnline -->
         <!-- style a top level menu item -->
         <ControlTemplate x:Key="VsOnline" TargetType="MenuItem">
-            <StackPanel TextBlock.FontSize="15px" Height="40" Orientation="Horizontal" Background="#005A9E">
+            <StackPanel TextBlock.FontSize="15px" Height="40" Orientation="Horizontal" Background="#6A3CB9">
                 <Label Content="{TemplateBinding Header}" Margin="5" Foreground="White" />
                 <Image Source="icon_down.png" Height="20" Margin="0,0,5,0" />
 
@@ -120,7 +120,7 @@
             <Menu IsMainMenu="True" HorizontalAlignment="Right">
                 <MenuItem Header="AlgoTrading" Template="{StaticResource VsOnline}" Command="{Binding OnClick_AlgoTrading}"/>
                 <MenuItem Header="#920Straddle" Template="{StaticResource VsMenuTop}">
-                    <MenuItem Header="Add new" Template="{StaticResource VsMenuSub}" Icon="/Resource/plus.png"/>
+                    <MenuItem Header="Add new" Template="{StaticResource VsMenuSub}" Command="{Binding OnClick_AddStraddle}" Icon="/Resource/plus.png"/>
                     <Separator Template="{StaticResource VsMenuSep}" />
                     <MenuItem Header="Saved Strategies" Template="{StaticResource VsMenuSub}" Icon="/Resource/Save.png"/>
                 </MenuItem>

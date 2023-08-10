@@ -21,14 +21,16 @@ namespace AlgoTerminal.ViewModel
         private readonly LoggerView _loggerView;
         private readonly TradeBookView _tradeBookView;
         private readonly OrderBookView _orderBookView;
+        private readonly StraddleView _straddleView;
         static string SettingFileName { get { return string.Format(@"{0}\{1}", Environment.CurrentDirectory, "Layout.xml"); } }
         #endregion
 
         #region Methods 
-        public DashboardViewModel(OrderBookView orderBookView, PortfolioView portfolioView, NetPositionView netPositionView, LoggerView loggerView, TradeBookView tradeBookView, IDashboardModel dashboardModel)//Sample2 sample2, Sample1 sample1)
+        public DashboardViewModel(StraddleView straddleView,OrderBookView orderBookView, PortfolioView portfolioView, NetPositionView netPositionView, LoggerView loggerView, TradeBookView tradeBookView, IDashboardModel dashboardModel)//Sample2 sample2, Sample1 sample1)
         {
             //this.sample2 = sample2;
             //this.sample1 = sample1;
+            _straddleView = straddleView;
             _netPositionView = netPositionView;
             _loggerView = loggerView;
             _tradeBookView = tradeBookView;
@@ -45,6 +47,7 @@ namespace AlgoTerminal.ViewModel
             DashboardView.dockManager.RegisterDock(_tradeBookView);
             DashboardView.dockManager.RegisterDock(_portfolioView);
             DashboardView.dockManager.RegisterDock(_orderBookView);
+            DashboardView.dockManager.RegisterDock(_straddleView);
         }
 
         public void DashboardView_Closing(object? sender, CancelEventArgs e)
@@ -78,11 +81,7 @@ namespace AlgoTerminal.ViewModel
             else
             {
                 _portfolioView.DockControl.Show();
-                _netPositionView.DockControl.Show();
                 _loggerView.DockControl.Show();
-                _tradeBookView.DockControl.Show();
-                _orderBookView.DockControl.Show();
-
             }
         }
         #endregion
@@ -94,6 +93,7 @@ namespace AlgoTerminal.ViewModel
             // this.sample1.DockControl.Show();
             About about = new About();
             about.Show();
+
         }
         public ICommand OnClick_RuningPortfolio => new RelayCommand2(OnClick_RuningPortfolioCommand, CanThisMethodExecute);
 
@@ -129,8 +129,13 @@ namespace AlgoTerminal.ViewModel
         {
             _orderBookView.DockControl.Show();
         }
+        public ICommand OnClick_AddStraddle => new RelayCommand2(OnClick_AddStraddleCommand, CanThisMethodExecute);
 
-       
+        private void OnClick_AddStraddleCommand()
+        {
+          _straddleView.DockControl.Show();
+        }
+
         #endregion
     }
 }

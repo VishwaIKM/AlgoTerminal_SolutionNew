@@ -5,25 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AlgoTerminal.UserControls"
              mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <TabControl>
             <TabItem Header="Open">
                 <Grid Background="LightGray">
                     <DataGrid x:Name="OpenOrderBook" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding OpenOrderBook}"   CanUserSortColumns = "True"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Client ID" Width="80" Binding="{Binding ClientID}" SortDirection="Descending"/>
-                            <DataGridTextColumn Header="Status" Width="80" Binding="{Binding Status}"/>
-                            <DataGridTextColumn Header="Trading Symbol" Width="110" Binding="{Binding TradingSymbol}"/>
-                            <DataGridTextColumn Header="Buy Sell" Width="70" Binding="{Binding BuySell}"/>
-                            <DataGridTextColumn Header="Price" Width="60" Binding="{Binding Price}"/>
-                            <DataGridTextColumn Header="Order Qty" Width="80" Binding="{Binding OrderQty}"/>
-                            <DataGridTextColumn Header="Traded Qty" Width="80" Binding="{Binding TradedQty}"/>
-                            <DataGridTextColumn Header="Trigger Price" Width="80" Binding="{Binding TriggerPrice}"/>
-                            <DataGridTextColumn Header="ModeratorID" Width="90" Binding="{Binding ModeratorID}"/>
-                            <DataGridTextColumn Header="Exch. ID" Width="170" Binding="{Binding ExchnageID}"/>
-                            <DataGridTextColumn Header="Last Update" Width="170" Binding="{Binding UpdateTime}"/>
-                            <DataGridTextColumn Header="Rejection Reason" Width="170" Binding="{Binding RejectionReason}"/>
+                            <DataGridTextColumn Header="Client ID" Width="Auto" Binding="{Binding ClientID}" SortDirection="Descending"/>
+                            <DataGridTextColumn Header="Status" Width="Auto" Binding="{Binding Status}"/>
+                            <DataGridTextColumn Header="Trading Symbol" Width="Auto" Binding="{Binding TradingSymbol}"/>
+                            <DataGridTextColumn Header="Buy Sell" Width="Auto" Binding="{Binding BuySell}"/>
+                            <DataGridTextColumn Header="Price" Width="Auto" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Order Qty" Width="Auto" Binding="{Binding OrderQty}"/>
+                            <DataGridTextColumn Header="Traded Qty" Width="Auto" Binding="{Binding TradedQty}"/>
+                            <DataGridTextColumn Header="Trigger Price" Width="Auto" Binding="{Binding TriggerPrice}"/>
+                            <DataGridTextColumn Header="ModeratorID" Width="Auto" Binding="{Binding ModeratorID}"/>
+                            <DataGridTextColumn Header="Exch. ID" Width="Auto" Binding="{Binding ExchnageID}"/>
+                            <DataGridTextColumn Header="Last Update" Width="Auto" Binding="{Binding UpdateTime}"/>
+                            <DataGridTextColumn Header="Rejection Reason" Width="Auto" Binding="{Binding RejectionReason}"/>
                         </DataGrid.Columns>
 
                         <DataGrid.RowStyle>
@@ -46,18 +57,18 @@
                 <Grid Background="LightGray">
                     <DataGrid x:Name="CloseOrderBook" IsReadOnly="True" AutoGenerateColumns="False" ItemsSource="{Binding CloseOrderBook}"   CanUserSortColumns = "True"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Client ID" Width="80" Binding="{Binding ClientID}" SortDirection="Descending"/>
-                            <DataGridTextColumn Header="Status" Width="80" Binding="{Binding Status}"/>
-                            <DataGridTextColumn Header="Trading Symbol" Width="110" Binding="{Binding TradingSymbol}"/>
-                            <DataGridTextColumn Header="Buy Sell" Width="70" Binding="{Binding BuySell}"/>
-                            <DataGridTextColumn Header="Price" Width="60" Binding="{Binding Price}"/>
-                            <DataGridTextColumn Header="Order Qty" Width="80" Binding="{Binding OrderQty}"/>
-                            <DataGridTextColumn Header="Traded Qty" Width="80" Binding="{Binding TradedQty}"/>
-                            <DataGridTextColumn Header="Trigger Price" Width="80" Binding="{Binding TriggerPrice}"/>
-                            <DataGridTextColumn Header="ModeratorID" Width="90" Binding="{Binding ModeratorID}"/>
-                            <DataGridTextColumn Header="Exch. ID" Width="170" Binding="{Binding ExchangeID}"/>
-                            <DataGridTextColumn Header="Last Update" Width="170" Binding="{Binding UpdateTime}"/>
-                            <DataGridTextColumn Header="Rejection Reason" Width="170" Binding="{Binding RejectionReason}"/>
+                            <DataGridTextColumn Header="Client ID" Width="Auto" Binding="{Binding ClientID}" SortDirection="Descending"/>
+                            <DataGridTextColumn Header="Status" Width="Auto" Binding="{Binding Status}"/>
+                            <DataGridTextColumn Header="Trading Symbol" Width="Auto" Binding="{Binding TradingSymbol}"/>
+                            <DataGridTextColumn Header="Buy Sell" Width="Auto" Binding="{Binding BuySell}"/>
+                            <DataGridTextColumn Header="Price" Width="Auto" Binding="{Binding Price}"/>
+                            <DataGridTextColumn Header="Order Qty" Width="Auto" Binding="{Binding OrderQty}"/>
+                            <DataGridTextColumn Header="Traded Qty" Width="Auto" Binding="{Binding TradedQty}"/>
+                            <DataGridTextColumn Header="Trigger Price" Width="Auto" Binding="{Binding TriggerPrice}"/>
+                            <DataGridTextColumn Header="ModeratorID" Width="Auto" Binding="{Binding ModeratorID}"/>
+                            <DataGridTextColumn Header="Exch. ID" Width="Auto" Binding="{Binding ExchangeID}"/>
+                            <DataGridTextColumn Header="Last Update" Width="Auto" Binding="{Binding UpdateTime}"/>
+                            <DataGridTextColumn Header="Rejection Reason" Width="Auto" Binding="{Binding RejectionReason}"/>
                         </DataGrid.Columns>
 
                         <DataGrid.RowStyle>

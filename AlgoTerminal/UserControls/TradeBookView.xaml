@@ -4,24 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AlgoTerminal.UserControls"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <DataGrid x:Name="TradeBookData" AutoGenerateColumns="False" ItemsSource="{Binding TradeDataCollection}" IsReadOnly="True"   CanUserSortColumns = "True"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"  >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Trade Symbol" Width="140" Binding="{Binding TradingSymbol}" SortDirection="Descending"/>
-                <DataGridTextColumn Header="Time" Width="110" Binding="{Binding Time}"/>
-                <DataGridTextColumn Header="Quantity" Width="*" Binding="{Binding Quantity}"/>
-                <DataGridTextColumn Header="Price" Width="*" Binding="{Binding Price}"/>
-                <DataGridTextColumn Header="Buy Sell" Width="*" Binding="{Binding BuySell}"/>
-                <DataGridTextColumn Header="Option Type" Width="*" Binding="{Binding OptionType}"/>
-                <DataGridTextColumn Header="Strike" Width="*" Binding="{Binding Strike}"/>
-                <DataGridTextColumn Header="Symbol" Width="*" Binding="{Binding Symbol}"/>
-                <DataGridTextColumn Header="Expiry" Width="*" Binding="{Binding Expiry}"/>
-                <DataGridTextColumn Header="Client ID" Width="*" Binding="{Binding ClientId}"/>
-                <DataGridTextColumn Header="Trade ID" Width="*" Binding="{Binding TradeID}"/>
-                <DataGridTextColumn Header="ModeratorID" Width="*" Binding="{Binding ModeratorID}"/>
-                <DataGridTextColumn Header="Exch. ID" Width="170" Binding="{Binding ExchnageID}"/>
+                <DataGridTextColumn Header="Trade Symbol" Width="Auto" Binding="{Binding TradingSymbol}" SortDirection="Descending"/>
+                <DataGridTextColumn Header="Time" Width="Auto" Binding="{Binding Time}"/>
+                <DataGridTextColumn Header="Quantity" Width="Auto" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Price" Width="Auto" Binding="{Binding Price}"/>
+                <DataGridTextColumn Header="Buy Sell" Width="Auto" Binding="{Binding BuySell}"/>
+                <DataGridTextColumn Header="Option Type" Width="Auto" Binding="{Binding OptionType}"/>
+                <DataGridTextColumn Header="Strike" Width="Auto" Binding="{Binding Strike}"/>
+                <DataGridTextColumn Header="Symbol" Width="Auto" Binding="{Binding Symbol}"/>
+                <DataGridTextColumn Header="Expiry" Width="Auto" Binding="{Binding Expiry}"/>
+                <DataGridTextColumn Header="Client ID" Width="Auto" Binding="{Binding ClientId}"/>
+                <DataGridTextColumn Header="Trade ID" Width="Auto" Binding="{Binding TradeID}"/>
+                <DataGridTextColumn Header="ModeratorID" Width="Auto" Binding="{Binding ModeratorID}"/>
+                <DataGridTextColumn Header="Exch. ID" Width="Auto" Binding="{Binding ExchnageID}"/>
             </DataGrid.Columns>
 
             <DataGrid.RowStyle>
