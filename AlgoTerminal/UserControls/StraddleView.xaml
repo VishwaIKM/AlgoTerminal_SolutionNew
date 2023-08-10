@@ -236,7 +236,7 @@
                                         IsChecked="False"
                                          x:Name="TrallingOptionsCheckBox"
                                         Content="Trailling Options" />
-                              
+
                                     <ComboBox x:Name="TrailingOptionCombo" SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}" Margin="10" Width="Auto">
                                         <ComboBoxItem Content="Lock"/>
                                         <ComboBoxItem Content="Lock and Trail" />
@@ -307,12 +307,6 @@
                                     materialDesign:HintAssist.Hint="Value in integers"
                                     IsEnabled="{Binding Path=IsChecked,ElementName=TrallingOptionsCheckBox}"/>
                                     </WrapPanel>
-                                </StackPanel>
-                                
-                               
-                                <StackPanel Orientation="Horizontal">
-                                    
-                                    
                                 </StackPanel>
                             </StackPanel>
 
