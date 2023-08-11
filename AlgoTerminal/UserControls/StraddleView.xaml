@@ -21,7 +21,7 @@
         <Grid>
             <Label Content="#920Straddle" FontSize="26" HorizontalAlignment="Center"/>
             <StackPanel>
-                <WrapPanel Orientation="Horizontal" Margin="0 5 0 0">
+                <WrapPanel Orientation="Horizontal" Margin="0 5 0 0" Height="2019">
                     <GroupBox Header="Instrument settings" Margin="20 35" FontSize="16" materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="Black" materialDesign:ColorZoneAssist.Foreground="White">
                         <StackPanel>
                             <StackPanel Orientation="Horizontal" >
@@ -138,6 +138,48 @@
                             </StackPanel>
                         </StackPanel>
                     </GroupBox>
+                    <GroupBox Header="Leg Builder" Margin="20 35" FontSize="16" materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="Black" materialDesign:ColorZoneAssist.Foreground="White">
+                        <WrapPanel>
+                            <WrapPanel Orientation="Horizontal" >
+                                <Label Content="Select segments:          " />
+                                <WrapPanel Orientation="Horizontal" Margin="10">
+                                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                                        BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                                        Margin="4"
+                                                        IsChecked="True"
+                                                        Content="Futures" />
+                                    <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                                         BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                                         Margin="4"
+                                                         IsChecked="False"
+                                                         Content="Options" />
+                                    <Label Content="     Total Lot:          "/>
+
+                                    <TextBox
+                                          Style="{StaticResource MaterialDesignFilledTextBox}"
+                                          VerticalAlignment="Top"
+                                          Margin="10 10 5 20"
+                                          AcceptsReturn="True"
+                                          MaxWidth="400"
+                                          materialDesign:HintAssist.Hint="Value in integers" />
+                                    <Label Content="     Position:          "/>
+
+                                    <StackPanel Orientation="Horizontal" Margin="10">
+                                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                                     BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                                     Margin="4"
+                                                     IsChecked="True"
+                                                     Content="Buy"/>
+                                        <RadioButton Style="{StaticResource MaterialDesignTabRadioButtonTop}"
+                                                      BorderBrush="{DynamicResource PrimaryHueMidBrush}"
+                                                      Margin="4"
+                                                      IsChecked="False"
+                                                      Content="Sell" />
+                                    </StackPanel>
+                                </WrapPanel>
+                            </WrapPanel>
+                        </WrapPanel>
+                    </GroupBox>
                     <GroupBox Header="Overall strategy settings" Margin="20 35" FontSize="16" materialDesign:ColorZoneAssist.Mode="Custom" materialDesign:ColorZoneAssist.Background="Black" materialDesign:ColorZoneAssist.Foreground="White">
                         <WrapPanel Orientation="Horizontal" Margin="10">
                             <StackPanel>
@@ -167,9 +209,9 @@
                                         IsChecked="False"
                                          x:Name="OverallREEntryStopLossCheckBox"
                                         Content="Overall Re-entry on SL" />
-                                <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
 
-                                    <ComboBox SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=OverallREEntryStopLossCheckBox}" Margin="0 10" Width="Auto">
+                                    <ComboBox SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=OverallREEntryStopLossCheckBox}" Margin="0" Width="Auto">
                                         <ComboBoxItem Content="Re ASAP"/>
                                         <ComboBoxItem Content="Rev Re ASAP" />
                                         <ComboBoxItem Content="Re MOMENTUM" />
@@ -191,7 +233,7 @@
                                         IsChecked="False"
                                         x:Name="OverallTragetCheckBox"
                                         Content="Overall Target"/>
-                                <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
                                     <ComboBox SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=OverallTragetCheckBox}" Margin="0 10" Width="Auto">
                                         <ComboBoxItem Content="MTM"/>
                                         <ComboBoxItem Content="Total Premium %" />
@@ -211,7 +253,7 @@
                                         IsChecked="False"
                                          x:Name="OverallREEntryTargetCheckBox"
                                         Content="Overall Re-entry on Tgt" />
-                                <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+                                <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
 
                                     <ComboBox SelectedIndex="0" IsEnabled="{Binding Path=IsChecked,ElementName=OverallREEntryTargetCheckBox}" Margin="0 10" Width="Auto">
                                         <ComboBoxItem Content="Re ASAP"/>
@@ -229,7 +271,7 @@
                                     IsEnabled="{Binding Path=IsChecked,ElementName=OverallREEntryTargetCheckBox}"/>
                                 </StackPanel>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="20 0 0 0">
+                            <StackPanel Orientation="Horizontal" Margin="0 10 100 0">
                                 <StackPanel>
                                     <CheckBox
                                         Style="{StaticResource MaterialDesignFilterChipCheckBox}"
@@ -309,7 +351,6 @@
                                     </WrapPanel>
                                 </StackPanel>
                             </StackPanel>
-
                         </WrapPanel>
                     </GroupBox>
                 </WrapPanel>

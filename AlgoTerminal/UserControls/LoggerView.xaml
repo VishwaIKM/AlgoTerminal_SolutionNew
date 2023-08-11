@@ -20,9 +20,9 @@
     <Grid>
         <DataGrid x:Name="LogDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding LogDataCollection}" IsReadOnly="True"   CanUserSortColumns = "True"  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"  >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Time" Width="160" Binding="{Binding Time}" SortDirection="Descending"/>
-                <DataGridTextColumn Header="Category" Width="120" Binding="{Binding Category}"/>
-                <DataGridTextColumn Header="Message" Width="*" Binding="{Binding Message}"/>
+                <DataGridTextColumn Header="Time" Width="Auto" Binding="{Binding Time}" SortDirection="Descending"/>
+                <DataGridTextColumn Header="Category" Width="Auto" Binding="{Binding Category}"/>
+                <DataGridTextColumn Header="Message" Width="Auto" Binding="{Binding Message}"/>
             </DataGrid.Columns>
 
             <DataGrid.RowStyle>
