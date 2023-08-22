@@ -19,7 +19,8 @@
             NONE = 0,
             NIFTY = 1,
             BANKNIFTY = 2,
-            FINNIFTY = 3
+            FINNIFTY = 3,
+            MIDCPNIFTY = 4
         }
 
         public enum EnumUnderlyingFrom : int

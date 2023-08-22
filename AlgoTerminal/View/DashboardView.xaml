@@ -116,6 +116,8 @@
                 <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.BankNiftyFut}" x:Name="txtKn1" Margin="10,0,7,0"/>
                 <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.FinNifty}" x:Name="txron1" Margin="10,0,7,0"/>
                 <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.FinNiftyFut}" x:Name="txron4" Margin="10,0,7,0"/>
+                <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.MidcpNifty}"  Margin="10,0,7,0"/>
+                <TextBlock FontSize="25" Text="{Binding Path=DashboardModel.MidcpNiftyFut}"  Margin="10,0,7,0"/>
             </StackPanel>
             <Menu IsMainMenu="True" HorizontalAlignment="Right">
                 <MenuItem Header="AlgoTrading" Template="{StaticResource VsOnline}" Command="{Binding OnClick_AlgoTrading}"/>

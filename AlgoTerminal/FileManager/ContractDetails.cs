@@ -20,6 +20,7 @@ namespace AlgoTerminal.FileManager
         public static uint NiftyFutureToken;
         public static uint BankNiftyFutureToken;
         public static uint FinNiftyFutureToken;
+        public static uint MidcpNiftyFutureToken;
 
         #endregion
 
@@ -180,11 +181,12 @@ namespace AlgoTerminal.FileManager
                 string eNifty = string.Format("NIFTY{0}FUT", exp[0].ToString("yyMMM").ToUpper());
                 string finNifty = string.Format("FINNIFTY{0}FUT", exp[0].ToString("yyMMM").ToUpper());
                 string eBank = string.Format("BANKNIFTY{0}FUT", exp[0].ToString("yyMMM").ToUpper());
+                string eMidcpNifty = string.Format("MIDCPNIFTY{0}FUT", exp[0].ToString("yyMMM").ToUpper());
 
                 NiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == eNifty).Select(x => x.Key).First();
                 BankNiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == eBank).Select(x => x.Key).First();
                 FinNiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == finNifty).Select(x => x.Key).First();
-
+                MidcpNiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == eMidcpNifty).Select(x => x.Key).First();
 
             }
         }

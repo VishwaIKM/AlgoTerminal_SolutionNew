@@ -14,6 +14,7 @@ namespace AlgoTerminal.Response
         const string NiftyFutFormat = "Nifty-F {0} ({1})";
         const string BankFutFormat = "Bank-F {0} ({1})";
         const string FinFutFormat = "Fin-F {0} ({1})";
+        const string MidcpNiftyFormat = "MCN-F {0} ({1})";
         const int PriceDivisor = 100;
         public static IDashboardModel? _dashboard;
 
@@ -77,6 +78,10 @@ namespace AlgoTerminal.Response
             else if (ContractDetails.BankNiftyFutureToken == stFeed.Token)
             {
                 _dashboard.BankNiftyFut = string.Format(BankFutFormat, (stFeed.LastTradedPrice / (double)PriceDivisor).ToString(PriceFormat), (((int)stFeed.LastTradedPrice - stFeed.ClosingPrice) / (double)PriceDivisor).ToString(PriceFormat));
+            }
+            else if(ContractDetails.MidcpNiftyFutureToken == stFeed.Token)
+            {
+                _dashboard.MidcpNiftyFut = string.Format(MidcpNiftyFormat, (stFeed.LastTradedPrice / (double)PriceDivisor).ToString(PriceFormat), (((int)stFeed.LastTradedPrice - stFeed.ClosingPrice) / (double)PriceDivisor).ToString(PriceFormat));
             }
 
             #endregion

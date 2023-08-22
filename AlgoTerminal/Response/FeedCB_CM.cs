@@ -11,6 +11,7 @@ namespace AlgoTerminal.Response
         const string k_nifty_index_format = "Nifty-S {0} ({1})";
         const string k_bank_index_format = "Bank-S {0} ({1})";
         const string k_fin_nifty_format = "FinNifty-S {0} ({1})";
+        const string k_mid_cp_nifty_format = "MCN-S {0} ({1})";
         const string k_priceformat = "0.00";
 
         public FeedCB_CM(IDashboardModel dashboardModel)
@@ -38,6 +39,10 @@ namespace AlgoTerminal.Response
             else if (text == "Nifty Fin Service")
             {
                 _dashboard.FinNifty = string.Format(k_fin_nifty_format, mULTIPLE_INDEX_BCAST_REC_7207.IndexValue.ToString(k_priceformat), (mULTIPLE_INDEX_BCAST_REC_7207.IndexValue - mULTIPLE_INDEX_BCAST_REC_7207.ClosingIndex).ToString(k_priceformat));
+            }
+            else if (text == "NIFTY MID SELECT")
+            {
+                _dashboard.MidcpNifty = string.Format(k_mid_cp_nifty_format, mULTIPLE_INDEX_BCAST_REC_7207.IndexValue.ToString(k_priceformat), (mULTIPLE_INDEX_BCAST_REC_7207.IndexValue - mULTIPLE_INDEX_BCAST_REC_7207.ClosingIndex).ToString(k_priceformat));
             }
         }
 

@@ -128,5 +128,27 @@ namespace AlgoTerminal.Model
             }
         }
 
+        private string _midcpFut;
+        public string MidcpNiftyFut { get => _midcpFut; set
+            {
+                if (_midcpFut != value)
+                {
+                    _midcpFut = value;
+                    OnPropertyChanged(nameof(MidcpNiftyFut));
+                }
+
+            }
+        }
+        private string _midcp;
+        public string MidcpNifty { get => _midcp; set
+            {
+                if (_midcp != value)
+                {
+                    _midcp = value;
+                    OnPropertyChanged(nameof(MidcpNifty));
+                }
+
+            }
+        }
     }
 }

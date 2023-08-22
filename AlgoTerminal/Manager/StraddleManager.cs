@@ -177,11 +177,23 @@ namespace AlgoTerminal.Manager
                 if (General.Portfolios is null) throw new Exception("General.Portfolios instance not created");
                 if (PortfolioViewModel.StrategyDataCollection is null) throw new Exception(" PortfolioViewModel.StrategyDataCollection instance not created");
 
+                string new_stg_key = OtherMethods.GetNewName(old_stg_key);
+                //Clean up 
+                if (old_stg_key.Contains('.'))
+                    old_stg_key = old_stg_key.Split('.')[0];
 
                 var clone_stg = straddleDataBaseLoad.Master_Straddle_Dictionary.ToDictionary(x => x.Key, x => x.Value);
                 var clone_leg = straddleDataBaseLoad.Straddle_LegDetails_Dictionary.ToDictionary(x => x.Key, x => x.Value);
+
                 var clone_stg_setting_value = clone_stg[old_stg_key];
                 var clone_leg_value = clone_leg[old_stg_key];
+
+                foreach(var cleanup in clone_leg_value.Keys)
+                {
+                    if (cleanup.Contains('.'))
+                        clone_leg_value.Remove(cleanup, out LegDetails? value);
+                }
+
 
                 if (Overall_SL_HIT)
                     clone_stg_setting_value.OverallReEntryOnSL--;
@@ -190,7 +202,7 @@ namespace AlgoTerminal.Manager
                 else
                     return false;
 
-                string new_stg_key = OtherMethods.GetNewName(old_stg_key);
+               
 
                 if (straddleDataBaseLoad.Master_Straddle_Dictionary.ContainsKey(new_stg_key))
                 {
@@ -400,7 +412,7 @@ namespace AlgoTerminal.Manager
 
 
 
-                if (!portfolio_leg_value.IsLegCancelledOrRejected)
+                if (!portfolio_leg_value.IsLegCancelledOrRejected && !Portfolio_value.IsSTGCompleted)
                 {
                     int OrderID = OrderManagerModel.GetOrderId();
                     OrderManagerModel.Portfolio_Dicc_By_ClientID.TryAdd(OrderID, portfolio_leg_value);
@@ -496,7 +508,7 @@ namespace AlgoTerminal.Manager
                         var data = await algoCalculation.IsMyPriceHITforCost(SL_HIT, TP_HIT, innerObject.EntryPrice, innerObject.Token);
                         if (data == true)
                         {
-                            if (!innerObject.IsLegCancelledOrRejected)
+                            if (!innerObject.IsLegCancelledOrRejected && !Portfolio_value.IsSTGCompleted)
                             {
                                 LoginViewModel.NNAPIRequest.PlaceOrderRequest((int)innerObject.Token, price1: innerObject.EntryPrice, orderQty: innerObject.Qty,
                             Buysell: innerObject.BuySell, OrderType.LIMIT, 0, OrderID);
@@ -514,7 +526,7 @@ namespace AlgoTerminal.Manager
                     else if (leg_Details.SettingReEntryOnSL == EnumLegReEntryOnSL.REASAP || leg_Details.SettingReEntryOnSL == EnumLegReEntryOnSL.REREVASAP
                     || leg_Details.SettingReEntryOnTgt == EnumLegReEntryOnTarget.REASAP || leg_Details.SettingReEntryOnTgt == EnumLegReEntryOnTarget.REREVASAP)
                     {
-                        if (!innerObject.IsLegCancelledOrRejected)
+                        if (!innerObject.IsLegCancelledOrRejected && !Portfolio_value.IsSTGCompleted)
                         {
                             LoginViewModel.NNAPIRequest.PlaceOrderRequest((int)innerObject.Token, price1: innerObject.EntryPrice, orderQty: innerObject.Qty,
                              Buysell: innerObject.BuySell, OrderType.LIMIT, 0, OrderID);
@@ -532,7 +544,7 @@ namespace AlgoTerminal.Manager
                     {
                         if (leg_Details.IsSimpleMomentumEnable == false)
                         {
-                            if (!innerObject.IsLegCancelledOrRejected)
+                            if (!innerObject.IsLegCancelledOrRejected && !Portfolio_value.IsSTGCompleted)
                             {
                                 LoginViewModel.NNAPIRequest.PlaceOrderRequest((int)innerObject.Token, price1: innerObject.EntryPrice, orderQty: innerObject.Qty,
                             Buysell: innerObject.BuySell, OrderType.LIMIT, 0, OrderID);
@@ -549,7 +561,7 @@ namespace AlgoTerminal.Manager
                         {
                             innerObject = algoCalculation.IsSimpleMovementumHitForRentry(innerObject, leg_Details, stg_setting_value);
 
-                            if (!innerObject.IsLegCancelledOrRejected)
+                            if (!innerObject.IsLegCancelledOrRejected && !Portfolio_value.IsSTGCompleted)
                             {
                                 LoginViewModel.NNAPIRequest.PlaceOrderRequest((int)innerObject.Token, price1: innerObject.EntryPrice, orderQty: innerObject.Qty,
                         Buysell: innerObject.BuySell, OrderType.LIMIT, 0, OrderID);
@@ -800,7 +812,7 @@ namespace AlgoTerminal.Manager
 
                         #region SL AND TP HIT AND REENTRY
                         bool Overall_SL_HIT = false, Overall_TP_HIT = false;
-                        if (stg_setting_value.IsOverallStopLossEnable == true && Portfolio_value.StopLoss != 0)
+                        if (stg_setting_value.IsOverallStopLossEnable == true)// && Portfolio_value.StopLoss != 0)
                         {
                             Overall_SL_HIT = algoCalculation.Is_overall_sl_hit(stg_setting_value, Portfolio_value);
                             if (Overall_SL_HIT)
@@ -811,7 +823,7 @@ namespace AlgoTerminal.Manager
                             }
 
                         }
-                        if (stg_setting_value.IsOverallReEntryOnTgtEnable == true && Portfolio_value.TargetProfit != 0)
+                        if (stg_setting_value.IsOverallReEntryOnTgtEnable == true)// && Portfolio_value.TargetProfit != 0)
                         {
 
                             Overall_TP_HIT = algoCalculation.Is_overall_tp_hit(stg_setting_value, Portfolio_value);
@@ -1148,7 +1160,7 @@ namespace AlgoTerminal.Manager
                                         double _currentLTP = algoCalculation.GetStrikePriceLTP(Token);
 
 
-                                        if (!portfolio_leg_value.IsLegCancelledOrRejected)
+                                        if (!portfolio_leg_value.IsLegCancelledOrRejected && !Portfolio_value.IsSTGCompleted)
                                         {
                                             //Place the Order Using NNAPI 
                                             int OrderID = OrderManagerModel.GetOrderId();//Get the client unique ID

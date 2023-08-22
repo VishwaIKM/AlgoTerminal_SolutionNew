@@ -54,23 +54,23 @@ namespace AlgoTerminal.FileManager
             if (OldName.Contains('.'))
             {
                 var data = OldName.Split('.');
-                var LastName = double.TryParse(data[1], out double value) ? value : 0;
+                var LastName = int.TryParse(data[1], out int value) ? value : 0;
                 if (LastName != 0)
                 {
                     var Name = data[0][..4];
-                    LastName /= 100.00;
-                    LastName += 0.01;
-                    NewName = Name + LastName;
+                    //LastName /= 100.00;
+                    LastName += 1;
+                    NewName = Name +"."+ LastName;
                 }
                 else
                 {
                     //BUG
-                    NewName = OldName + "0.01";
+                    NewName = OldName + ".19";
                 }
             }
             else
             {
-                NewName = OldName + "0.01";
+                NewName = OldName + ".1";
             }
             return NewName;
         }

@@ -4,6 +4,7 @@ using AlgoTerminal.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using static AlgoTerminal.Model.EnumDeclaration;
 
@@ -29,6 +30,7 @@ namespace AlgoTerminal.Manager
             if (enumIndex == EnumIndex.NIFTY) SpotString = "Nifty 50";
             else if (enumIndex == EnumIndex.BANKNIFTY) SpotString = "Nifty Bank";
             else if (enumIndex == EnumIndex.FINNIFTY) SpotString = "Nifty Fin Service";
+            else if (enumIndex == EnumIndex.MIDCPNIFTY) SpotString = "NIFTY MID SELECT";
             else SpotString = null;
             if (SpotString == null)
                 throw new Exception();
@@ -148,6 +150,7 @@ namespace AlgoTerminal.Manager
                     if (enumIndex == EnumIndex.NIFTY) SpotString = "Nifty 50";
                     else if (enumIndex == EnumIndex.BANKNIFTY) SpotString = "Nifty Bank";
                     else if (enumIndex == EnumIndex.FINNIFTY) SpotString = "Nifty Fin Service";
+                    else if (enumIndex == EnumIndex.MIDCPNIFTY) SpotString = "NIFTY MID SELECT";
                     else SpotString = null;
                     if (SpotString == null)
                         throw new Exception();
@@ -1073,6 +1076,7 @@ namespace AlgoTerminal.Manager
                 if (enumIndex == EnumIndex.NIFTY) SpotString = "Nifty 50";
                 else if (enumIndex == EnumIndex.BANKNIFTY) SpotString = "Nifty Bank";
                 else if (enumIndex == EnumIndex.FINNIFTY) SpotString = "Nifty Fin Service";
+                else if (enumIndex == EnumIndex.MIDCPNIFTY) SpotString = "NIFTY MID SELECT";
                 else SpotString = null;
                 if (SpotString == null)
                     throw new Exception();
@@ -1272,14 +1276,14 @@ namespace AlgoTerminal.Manager
                 {
                     while (entryPrice >= GetInstrumentPrice(token))
                     {
-                        await Task.Delay(300);
+                        await Task.Delay(400);
                     }
                 }
                 else if (tP_HIT)
                 {
                     while (GetInstrumentPrice(token) <= entryPrice)
                     {
-                        await Task.Delay(300);
+                        await Task.Delay(400);
                     }
                 }
                 return true;
