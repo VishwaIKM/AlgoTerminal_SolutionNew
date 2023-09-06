@@ -505,7 +505,7 @@ namespace AlgoTerminal.Manager
                     || leg_Details.SettingReEntryOnTgt == EnumLegReEntryOnTarget.RECOST || leg_Details.SettingReEntryOnTgt == EnumLegReEntryOnTarget.REREVCOST)
                     {
                         innerObject.Message = EnumStrategyMessage.RE_ENTRY;
-                        var data = await algoCalculation.IsMyPriceHITforCost(SL_HIT, TP_HIT, innerObject.EntryPrice, innerObject.Token);
+                        var data = await algoCalculation.IsMyPriceHITforCost(SL_HIT, TP_HIT, innerObject.EntryPrice, innerObject.Token, innerObject.IsLegCancelledOrRejected);
                         if (data == true)
                         {
                             if (!innerObject.IsLegCancelledOrRejected && !Portfolio_value.IsSTGCompleted)
@@ -751,12 +751,13 @@ namespace AlgoTerminal.Manager
                 {
                     var Stg_status = await PortfolioMonitor_STG();
                 }
-                catch
+                catch(Exception ex)
                 {
-
+                    logFileWriter.WriteLog(EnumLogType.Error, ex.Message + ex.StackTrace);
                 }
                 finally
                 {
+                   
                     await Task.Delay(50);
                 }
             }
@@ -1210,6 +1211,7 @@ namespace AlgoTerminal.Manager
                                         portfolio_leg_value.Status = EnumStrategyStatus.REJECTED;
                                         portfolio_leg_value.Message = EnumStrategyMessage.ERROR;
                                         logFileWriter.WriteLog(EnumDeclaration.EnumLogType.Error, ex.ToString());
+                                        logFileWriter.DisplayLog(EnumDeclaration.EnumLogType.Error, ex.Message);
                                     }
 
                                 });
@@ -1217,6 +1219,7 @@ namespace AlgoTerminal.Manager
                             }
 
                             Task.WaitAll(tasks.ToArray());
+              
                             Portfolio_value.TotalEntryPremiumPaid = TotalPremium;
 
 

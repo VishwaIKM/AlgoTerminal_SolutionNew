@@ -5,7 +5,7 @@
         public enum EnumStrategyStatus { NONE, ENTRY_ADDED, ENTRY_PARTIALLY_TRADED, RUNING, EXIT_ADDED, EXIT_PARTIALLY_TRADED, COMPLETED, REJECTED };
         public enum EnumStrategyMessage { LEG_TP_HIT, LEG_SL_HIT, OVERALL_TP_HIT, OVERALL_SL_HIT, INVALID_TIME, ERROR, ORDER_CANCELLED_BY_SYSTEM, ORB_IN_PROGRESS, MOMENTUM, NONE, MANUAL_SQUAREOFF, RE_ENTRY, SYSTEM_SQUAREOFF };
         public enum EnumLogType { Warning, Error, Success, Info, Buy, Sell, Response };
-        public enum EnumEntryAndExit : int { TIMEBASED, SIGNALBASED, OnlyEntrySignalBased }
+        public enum EnumEntryAndExit : int { TIMEBASED, SIGNALBASED, ONLYENTRYSIGNALBASED }
 
         public enum EnumSignalType : int
         {

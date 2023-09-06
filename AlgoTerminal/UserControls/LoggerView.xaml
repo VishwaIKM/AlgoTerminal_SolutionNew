@@ -29,10 +29,10 @@
                 <Style TargetType="DataGridRow">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding Category}" Value="Warning">
-                            <Setter Property="Background" Value="LightPink"></Setter>
+                            <Setter Property="Background" Value="LightYellow"></Setter>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Category}" Value="Error">
-                            <Setter Property="Background" Value="LightGreen"></Setter>
+                            <Setter Property="Background" Value="LightPink"></Setter>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
