@@ -1268,26 +1268,26 @@ namespace AlgoTerminal.Manager
 
 
         #region Is Price Match For Re entry
-        public async Task<bool> IsMyPriceHITforCost(bool sL_HIT, bool tP_HIT, double entryPrice, uint token, bool CancelOrReject)
+        public async Task<bool> IsMyPriceHITforCost(bool sL_HIT, bool tP_HIT, InnerObject innerObject)
         {
             try
             {
                 if (sL_HIT)
                 {
-                    while (entryPrice >= GetInstrumentPrice(token))
+                    while (innerObject.EntryPrice >= GetInstrumentPrice(innerObject.Token))
                     {
                         await Task.Delay(400);
-                        if(CancelOrReject)
+                        if(innerObject.IsLegCancelledOrRejected)
                             break;
 
                     }
                 }
                 else if (tP_HIT)
                 {
-                    while (GetInstrumentPrice(token) <= entryPrice)
+                    while (GetInstrumentPrice(innerObject.Token) <= innerObject.EntryPrice)
                     {
                         await Task.Delay(400);
-                        if (CancelOrReject)
+                        if (innerObject.IsLegCancelledOrRejected)
                             break;
                     }
                 }

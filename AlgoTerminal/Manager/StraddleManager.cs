@@ -132,7 +132,7 @@ namespace AlgoTerminal.Manager
                                     catch (Exception ex)
                                     {
                                         IsValid = false;
-                                        logFileWriter.WriteLog(EnumDeclaration.EnumLogType.Error, ex.ToString());
+                                        logFileWriter.WriteLog(EnumLogType.Error, ex.ToString());
                                     }
                                 }
                                 await Application.Current.Dispatcher.BeginInvoke(new Action(() =>
@@ -505,7 +505,7 @@ namespace AlgoTerminal.Manager
                     || leg_Details.SettingReEntryOnTgt == EnumLegReEntryOnTarget.RECOST || leg_Details.SettingReEntryOnTgt == EnumLegReEntryOnTarget.REREVCOST)
                     {
                         innerObject.Message = EnumStrategyMessage.RE_ENTRY;
-                        var data = await algoCalculation.IsMyPriceHITforCost(SL_HIT, TP_HIT, innerObject.EntryPrice, innerObject.Token, innerObject.IsLegCancelledOrRejected);
+                        var data = await algoCalculation.IsMyPriceHITforCost(SL_HIT, TP_HIT, innerObject);
                         if (data == true)
                         {
                             if (!innerObject.IsLegCancelledOrRejected && !Portfolio_value.IsSTGCompleted)
@@ -786,6 +786,7 @@ namespace AlgoTerminal.Manager
                     if (Portfolio_value.PNL != 0 && !Portfolio_value.IsSTGCompleted)
                     {
                         #region Check Square off Time
+                        Portfolio_value.IsSTGStatus = "Running";
                         if (stg_setting_value.EntryAndExitSetting == EnumEntryAndExit.TIMEBASED)
                         {
                             int SquareofSeconds = (int)(stg_setting_value.ExitTime - DateTime.Now).TotalSeconds;
@@ -854,6 +855,11 @@ namespace AlgoTerminal.Manager
                             }
                         }
                         #endregion
+                    }
+                    else if(Portfolio_value.PNL != 0 && Portfolio_value.IsSTGCompleted) //check if any leg in runing mode or C/P left without updated
+                    {
+                        var status = await SquareOffStraddle920(Portfolio_value, EnumStrategyMessage.SYSTEM_SQUAREOFF);
+                        Portfolio_value.IsSTGStatus = "STOPPED";
                     }
                 }
             }

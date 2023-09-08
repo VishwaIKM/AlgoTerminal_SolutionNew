@@ -22,7 +22,7 @@ namespace AlgoTerminal.Services
         double GetStrikePriceLTP(uint Token);
         bool Get_if_SL_is_HIT(double CurrentStopLossValue, EnumDeclaration.EnumLegSL enumLegSL, EnumDeclaration.EnumOptiontype enumOptiontype, EnumDeclaration.EnumPosition enumPosition, EnumDeclaration.EnumIndex enumIndex, uint Token, EnumDeclaration.EnumUnderlyingFrom underlyingFrom);
         bool Get_if_TP_is_HIT(double CurrentTargetProfitValue, EnumDeclaration.EnumLegSL enumLegSL, EnumDeclaration.EnumOptiontype enumOptiontype, EnumDeclaration.EnumPosition enumPosition, EnumDeclaration.EnumIndex enumIndex, uint Token, EnumDeclaration.EnumUnderlyingFrom underlyingFrom);
-        Task<bool> IsMyPriceHITforCost(bool sL_HIT, bool tP_HIT, double entryPrice, uint token, bool CancelOrReject);
+        Task<bool> IsMyPriceHITforCost(bool sL_HIT, bool tP_HIT, InnerObject innerObject);
         InnerObject IsSimpleMovementumHitForRentry(InnerObject newLegDetails, LegDetails leg_Details, StrategyDetails stg_setting_value);
         bool Is_overall_sl_hit(StrategyDetails stg_setting_value, PortfolioModel portfolio_value);
         bool Is_overall_tp_hit(StrategyDetails stg_setting_value, PortfolioModel portfolio_value);

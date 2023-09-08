@@ -109,6 +109,7 @@
                 <!--Below is StgDetails binding-->
                 <DataGridTextColumn Header="Name" Width="120" Binding="{Binding Name}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Index" Width="120" Binding="{Binding Index}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Status" Width="120" Binding="{Binding IsSTGStatus}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Entry Time" Width="220" Binding="{Binding EntryTime}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Exit Time" Width="220" Binding="{Binding ExitTime}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="P/L" Width="*" Binding="{Binding PNL}" IsReadOnly="True">

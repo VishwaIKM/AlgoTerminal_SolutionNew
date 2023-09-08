@@ -135,6 +135,8 @@ namespace AlgoTerminal.Response
                     orderBookModel.ExchangeID = ExchOrdId;
                     orderBookModel.UpdateTime = Time;
                     orderBookModel.RejectionReason = RejectionReason;
+                    orderBookModel.Status = Status;
+                    
 
 
                     if ((Status == "modify" || Status == "modified" || Status == "open" || Status == "open pending"
@@ -142,6 +144,8 @@ namespace AlgoTerminal.Response
                     {
 
                         //will check and the invert this
+
+
 
                     }
                     else
