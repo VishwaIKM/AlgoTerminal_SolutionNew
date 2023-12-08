@@ -173,21 +173,38 @@ namespace AlgoTerminal.FileManager
 
         private static void LoadFutToken()
         {
-            DateTime[] exp = ContractDetailsToken.Where(x => x.Value.Symbol == "NIFTY" && x.Value.InstrumentType == "FUTIDX").Select(x => Convert.ToDateTime(x.Value.Expiry)).ToArray();
+            DateTime[] Niftyexp = ContractDetailsToken.Where(x => x.Value.Symbol == "NIFTY" && x.Value.InstrumentType == "FUTIDX").Select(x => Convert.ToDateTime(x.Value.Expiry)).ToArray();
 
-            if (exp.Count() > 0)
+            if (Niftyexp.Count() > 0)
             {
-                Array.Sort(exp);
-                string eNifty = string.Format("NIFTY{0}FUT", exp[0].ToString("yyMMM").ToUpper());
-                string finNifty = string.Format("FINNIFTY{0}FUT", exp[0].ToString("yyMMM").ToUpper());
-                string eBank = string.Format("BANKNIFTY{0}FUT", exp[0].ToString("yyMMM").ToUpper());
-                string eMidcpNifty = string.Format("MIDCPNIFTY{0}FUT", exp[0].ToString("yyMMM").ToUpper());
-
+                Array.Sort(Niftyexp);
+                string eNifty = string.Format("NIFTY{0}FUT", Niftyexp[0].ToString("yyMMM").ToUpper());
                 NiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == eNifty).Select(x => x.Key).First();
-                BankNiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == eBank).Select(x => x.Key).First();
-                FinNiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == finNifty).Select(x => x.Key).First();
-                MidcpNiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == eMidcpNifty).Select(x => x.Key).First();
+            }
 
+            DateTime[] finNiftyexp = ContractDetailsToken.Where(x => x.Value.Symbol == "FINNIFTY" && x.Value.InstrumentType == "FUTIDX").Select(x => Convert.ToDateTime(x.Value.Expiry)).ToArray();
+            if(finNiftyexp.Count()>0)
+            {
+                Array.Sort(finNiftyexp);
+                string finNifty = string.Format("FINNIFTY{0}FUT", finNiftyexp[0].ToString("yyMMM").ToUpper());
+                FinNiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == finNifty).Select(x => x.Key).First();
+            }
+
+            DateTime[] bankniftyexp = ContractDetailsToken.Where(x => x.Value.Symbol == "BANKNIFTY" && x.Value.InstrumentType == "FUTIDX").Select(x => Convert.ToDateTime(x.Value.Expiry)).ToArray();
+            if (bankniftyexp.Count() > 0)
+            {
+                Array.Sort(bankniftyexp);
+                string eBank = string.Format("BANKNIFTY{0}FUT", bankniftyexp[0].ToString("yyMMM").ToUpper());
+                BankNiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == eBank).Select(x => x.Key).First();
+               
+            }
+
+            DateTime[] midniftyexp = ContractDetailsToken.Where(x => x.Value.Symbol == "MIDCPNIFTY" && x.Value.InstrumentType == "FUTIDX").Select(x => Convert.ToDateTime(x.Value.Expiry)).ToArray();
+            if (midniftyexp.Count() > 0)
+            {
+                Array.Sort(midniftyexp);
+                string eMidcpNifty = string.Format("MIDCPNIFTY{0}FUT", midniftyexp[0].ToString("yyMMM").ToUpper());
+                MidcpNiftyFutureToken = ContractDetailsToken.Where(x => x.Value.TrdSymbol == eMidcpNifty).Select(x => x.Key).First();
             }
         }
 

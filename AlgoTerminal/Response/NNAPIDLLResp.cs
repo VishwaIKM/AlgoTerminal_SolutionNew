@@ -72,7 +72,7 @@ namespace AlgoTerminal.Response
                 }
                 else
                 {
-                    NetPositionModel netPositionModel = new();
+                    NetPositionModel netPositionModel = new(); 
                     netPositionModel.TradingSymbol = contract.TrdSymbol;
                     netPositionModel.BuyQuantity = BuyTradedQty;
                     netPositionModel.SellQuantity = SellTradedQty;
@@ -89,7 +89,6 @@ namespace AlgoTerminal.Response
 
                         }), DispatcherPriority.Background, null);
                     }
-
                 }
 
 

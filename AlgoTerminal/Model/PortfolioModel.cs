@@ -129,7 +129,7 @@ namespace AlgoTerminal.Model
         }
         public double UpdateInFavorPremiumPaidforTrailSLleg { get; set; }
         public double UpdateInInitialMTMPaidforTrailSLleg { get; set; }
-        private string 
+        //private string 
         public string IsSTGStatus { get; set; } = "Stopped"; //by def
         public bool IsSTGCompleted { get; set; } = false;
     }
